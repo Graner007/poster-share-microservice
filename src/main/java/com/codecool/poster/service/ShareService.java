@@ -4,6 +4,7 @@ import com.codecool.poster.model.Share;
 import com.codecool.poster.model.key.ShareKey;
 import com.codecool.poster.repository.ShareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,5 +20,5 @@ public class ShareService {
 
     public void deleteShare(long personId, long postId) { shareRepository.deleteById(new ShareKey(postId, personId)); }
 
-    public Collection<Share> findAllByPersonIdIn(Collection<Long> postIds) { return shareRepository.findAllByPostIdIn(postIds); }
+    public ResponseEntity findAllByPersonIdIn(Collection<Long> postIds) { return ResponseEntity.ok(shareRepository.findAllByPostIdIn(postIds)); }
 }
